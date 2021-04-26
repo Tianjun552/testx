@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0px;
+      padding:0px;
+    }
+    ul{
+      list-style:none;
+    }
+    .sb{
+      width:100%;
+      height:45px;
+      background-color: black;
+      position: relative;
+    }
+    .nav{
+      width:500px;
+      height:45px;
+    }
+    .nav>li{
+      width:100px;
+      height:45px;
+      line-height: 45px;
+      text-align: center;
+      float: left;
+      color:white;
+    }
+    .nav>.nav1{
+      color:burlywood;
+      font-weight: bold;
+    }
+    .sub{
+      width:90px;
+      background: grey;
+      display: none;
+    }
+    .div1{
+      width:230px;
+      height:45px;
+      position: absolute;
+      right:0px;
+      bottom: 0px;
+    }
+    .ad{
+      line-height: 45px;
+    }
+    .min{
+      color:white;
+    }
+    .btn{
+      width:90px;
+      height:25px;
+      background-color: #5bc0de;
+      border-radius: 5px;
+      color:white;
+      border:none;
+    }
+    .table{
+      width:100%;
+      height:500px;
+    }
+    .table>.table2{
+      width:900px;
+      height: auto;
+      margin:50px 30px 0px 115px;
+      background-color: turquoise;
+    }
+    .input{
+      width:380px;
+      height:auto;
+      background-color: red;
+    }
+  </style>
+  <script src="../jquery-3.4.1.js"></script>
+  <script>
+    $(function(){
+      //监听事件的移入事件
+      $(".sb>.nav>li").click(function(){
+        var $sub=$(this).children(".sub");
+        $sub.stop().slideDown(500);
+      })
+      //监听事件的移出事件
+      $(".sb>.nav>li").click(function(){
+        var $sub=$(this).children(".sub");
+        $sub.stop().slideUp(500);
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="sb">
+    <ul class="nav">
+      <li class="nav1">用户管理</li>
+      <li>视频管理
+        <ul class="sub">
+          <li>新增商品</li>
+          <li>修改商品</li>
+        </ul>
+      </li>
+      <li>菜单管理
+        <ul class="sub">
+          <li>新增商品</li>
+          <li>修改商品</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="div1">
+      <span class="ad min">欢迎你，admin</span>
+      <input type="button" value="退出登录" class="btn">
+    </div>
+  </div>
+  <div class='table'>
+    <div class="table2">
+      <div class="input">
+        <label>请输入账号:</label>
+        <input type="text" placeholder="请输入用户名" name="" id="">
+        <input type="button" value="查询" name="" id=""><br />
+        <input type="button" value="批量删除" name="" id="">
+        <table border='1' cellspacing="0" cellpadding="0">
+          <tr class="trh">
+            <th>用户名</th>
+            <th>性别</th>
+            <th>角色</th>
+            <th>管理操作</th>
+          </tr>
+          <tr>
+
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

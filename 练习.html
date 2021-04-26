@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0px;
+      padding:0px;
+    }
+    ul{
+      list-style:none;
+    }
+    .sb{
+      width:100%;
+      height:45px;
+      background-color: black;
+      position: relative;
+    }
+    .nav{
+      width:500px;
+      height:45px;
+    }
+    .nav>li{
+      width:100px;
+      height:45px;
+      line-height: 45px;
+      text-align: center;
+      float: left;
+      color:white;
+    }
+    .nav>.nav1{
+      color:burlywood;
+      font-weight: bold;
+    }
+    .sub{
+      width:90px;
+      background: grey;
+      display: none;
+    }
+    .table {
+      width: auto;
+      height: auto;
+    }
+
+    .table>table {
+      border-collapse: collapse;
+      width: 60%;
+      border: 1px solid #ccc;
+    }
+
+    .table table tr {
+      border: 1px solid #ccc;
+      height: 40px;
+      border-left: none;
+      border-right: none;
+    }
+
+    .tr1>td {
+      font-weight: bold;
+      background-color: darkturquoise;
+    }
+
+    .updete {
+      background-color: red;
+      color: white;
+      border: none;
+    }
+    .max1 {
+      width: 50%;
+      height: 300px;
+    }
+
+    .nr {
+      width: auto;
+      height: 80px;
+      line-height: 70px;
+    }
+
+    .max1 #wenben {
+      width: 300px;
+      height: 35px;
+    }
+
+    .max1 #fabiao {
+      width: 50px;
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+    }
+    .hhh{
+      width:auto;
+      height:auto;
+      margin:50px auto;
+      margin-left:400px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="jquery-3.4.1.js"></script>
+  <script>
+    function getDel(e) {
+      if(confirm("你确定删除吗"))
+      {
+        $(e).parent().remove();
+      }
+    }
+    $(function () {
+      $('.updete').click(function () {
+        if (confirm("确定要删除吗？")) {
+          $(this).parent().parent().remove();
+        }
+      })
+      $("#fabiao").click(function () {
+        if ($("#wenben").val() == "") {
+          alert("文本框不能为空");
+        }
+        else {
+          var tr = $("<tr><td>" + $("select").val() + "</td><td>" + $("input[type='radio']:checked").val() + "</td><td>" + $("#wenben").val() + "</td><td onClick='getDel(this)'><input type='button' value='删除' class='updete'></td></tr>");
+          $("table").append(tr);
+        }
+      })
+
+      $(".sb>.nav>li").mouseenter(function(){
+        var $sub=$(this).children(".sub");
+        $sub.stop().slideDown(500);
+      })
+      //监听事件的移出事件
+      $(".sb>.nav>li").mouseleave(function(){
+        var $sub=$(this).children(".sub");
+        $sub.stop().slideUp(500);
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div class="sb">
+    <ul class="nav">
+      <li class="nav1">用户管理</li>
+      <li>视频管理
+        <ul class="sub">
+          <li>新增商品</li>
+          <li>修改商品 </li>
+        </ul>
+      </li>
+      <li>菜单管理
+        <ul class="sub">
+          <li>新增商品</li>
+          <li>修改商品</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="hhh">
+    <div class="max">
+      <div class="table">
+        <table cellspacing="0" cellpadding="0">
+          <tr class="tr1">
+            <td>评论者</td>
+            <td>评论的文章</td>
+            <td>内容</td>
+            <td>操作</td>
+          </tr>
+          <tr>
+            <td>刘晶</td>
+            <td>我的难忘的2020年</td>
+            <td>欢迎大家转发加评论！</td>
+            <td><input type="button" placeholder="" value="删除" class="updete">
+            </td>
+          </tr>
+          <tr>
+            <td>游客1</td>
+            <td>2021年的学习计划</td>
+            <td>非常值得我们借鉴和学习</td>
+            <td><input type="button" value="删除" class="updete"></td>
+          </tr>
+          <tr>
+            <td>游客2</td>
+            <td>2021年的学习计划</td>
+            <td>看来我也是要制定我的学习计划了!</td>
+            <td><input type="button" value="删除" class="updete"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="max1">
+        <div class="nr">
+          <label for="">评论者:</label>
+          <select name="" id="">
+            <option value="刘晶">刘晶</option>
+            <option value="李四">李四</option>
+          </select>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="">评论文章:</label>
+          <input type="radio" value="我的难忘的2020年" name="abcdrfg" id="">我的难忘的2020年
+          <input type="radio" value="2021年的学习计划" name="abcdrfg" id="">2021年的学习计划
+        </div>
+        <div>
+          <label for="">内容:</label>
+          <input type="text" name="" id="wenben">
+          <input type="button" value="发表" name="" id="fabiao">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
